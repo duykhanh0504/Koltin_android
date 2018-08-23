@@ -19,8 +19,10 @@ import org.json.JSONObject
 import java.io.InputStream
 import java.io.StringReader
 import com.google.android.gms.ads.*
+import java.util.*
 
 class MainGame : AppCompatActivity(), View.OnClickListener {
+
 
     override fun onClick(p0: View?) {
 
@@ -43,8 +45,8 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
 
     lateinit var mInterstitialAd: InterstitialAd
 
-    var listquestion: List<item> = ArrayList();
-    var numberquestion: Int =0
+    var listquestion: MutableList<item> = ArrayList();
+    var numberquestion: Int =15
     var currentquestion: Int =0
 
     var txtquestion:TextView? = null;
@@ -55,6 +57,9 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     private var btnAnswer3: Button? = null
     private var btnAnswer4: Button? = null
 
+
+    fun MutableList<item>.randomElement()
+            = if (this.isEmpty()) null else this[Random().nextInt(this.size)]
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,10 +95,10 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    fun getListQuestionFromJson(jsonStr: String): List<item> {
+    fun getListQuestionFromJson(jsonStr: String): MutableList<item> {
 
         val groupListType = object : TypeToken<ArrayList<item>>() {}.getType()
-        val itemList = Gson().fromJson<List<item>>(jsonStr, groupListType)
+        val itemList = Gson().fromJson<MutableList<item>>(jsonStr, groupListType)
 
         return itemList
     }
@@ -131,19 +136,27 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    inner class AsyncTaskLoading : AsyncTask<String, String, List<item>>() {
+    inner class AsyncTaskLoading : AsyncTask<String, String, MutableList<item>>() {
 
         override fun onPreExecute() {
             super.onPreExecute()
 
         }
 
-        override fun doInBackground(vararg p0: String?): List<item> {
+        override fun doInBackground(vararg p0: String?): MutableList<item> {
 
-            var Result: List<item> = ArrayList();
+            var Result: MutableList<item> = ArrayList();
+            var temp: MutableList<item> = ArrayList();
             try {
                 var obj = JSONObject(readJSONFromAsset());
-                Result = getListQuestionFromJson(obj.getString("result"));
+                temp = getListQuestionFromJson(obj.getString("result"));
+                for (a in 1..15) {
+                    val number = temp.randomElement()
+                    Result.add(number as item);
+                    temp.remove(number as item)
+
+                }
+
             } catch (e: Exception) {
 
             }
@@ -151,7 +164,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
             return Result
         }
 
-        override fun onPostExecute(result: List<item>) {
+        override fun onPostExecute(result: MutableList<item>) {
             super.onPostExecute(result)
             listquestion = result
             nextquestion()
