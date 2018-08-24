@@ -48,6 +48,8 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     var listquestion: MutableList<item> = ArrayList();
     var numberquestion: Int =15
     var currentquestion: Int =0
+    var maxquesion: Int =15
+    var Score: Int =0
 
     var txtquestion:TextView? = null;
     var container:FrameLayout? = null;
@@ -57,15 +59,40 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     private var btnAnswer3: Button? = null
     private var btnAnswer4: Button? = null
 
+    fun InitGame()
+    {
+        numberquestion = 15
+        currentquestion= 0
+        maxquesion = 15
+        Score = 0
+    }
+
 
     fun MutableList<item>.randomElement()
             = if (this.isEmpty()) null else this[Random().nextInt(this.size)]
+
+    fun <T, L : MutableList<T>> L.shuffle(): L {
+        val rng = Random()
+
+        for (index in 0..this.size - 1) {
+            val randomIndex = rng.nextInt(this.size)
+
+            // Swap with the random position
+            val temp = this[index]
+            this[index] = this[randomIndex]
+            this[randomIndex] = temp
+        }
+
+        return this
+    }
+
+    fun <T> Iterable<T>.shuffle(): List<T> = this.toList().shuffle()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_game)
         val adView = findViewById(R.id.adview) as AdView
-
+        InitGame()
          txtquestion = findViewById(R.id.question) as TextView
          //container = findViewById(R.id.container) as FrameLayout
 
@@ -75,16 +102,16 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         btnAnswer4 = findViewById(R.id.answer4) as Button
 
         btnAnswer1!!.setOnClickListener {
-
+            CheckAnswer( 0)
         }
         btnAnswer2!!.setOnClickListener {
-
+            CheckAnswer( 1)
         }
         btnAnswer3!!.setOnClickListener {
-
+            CheckAnswer( 2)
         }
         btnAnswer3!!.setOnClickListener {
-
+            CheckAnswer( 3)
         }
 
         val adRequest = AdRequest.Builder()
@@ -95,6 +122,9 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
 
     }
 
+    fun ClosedRange<Int>.random() =
+            Random().nextInt((endInclusive + 1) - start) +  start
+
     fun getListQuestionFromJson(jsonStr: String): MutableList<item> {
 
         val groupListType = object : TypeToken<ArrayList<item>>() {}.getType()
@@ -103,10 +133,44 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         return itemList
     }
 
+    fun CheckAnswer( ans:Int){
+        var result: Boolean? = false
+
+        if(ans == listquestion.get(currentquestion).rightanswer)
+        {
+            Score++
+
+
+        }
+        else
+        {
+            Score =0
+        }
+        if(currentquestion < maxquesion )
+        {
+            currentquestion++
+            nextquestion()
+        }
+        else
+        {
+            GameOver()
+        }
+
+    }
+
+    fun GameOver()
+    {
+        val intent = Intent(this, GameOverActivity::class.java)
+        startActivity(intent);
+        finish()
+    }
+
     fun readJSONFromAsset(): String? {
         var json: String? = null
         try {
-            val  inputStream: InputStream = assets.open("filename.json")
+            val i = (1..3).random()
+            var url:String = "filename$i.json";
+            val  inputStream: InputStream = assets.open(url)
             json = inputStream.bufferedReader().use{it.readText()}
         } catch (ex: Exception) {
             ex.printStackTrace()
@@ -146,16 +210,17 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         override fun doInBackground(vararg p0: String?): MutableList<item> {
 
             var Result: MutableList<item> = ArrayList();
-            var temp: MutableList<item> = ArrayList();
+          //  var temp: MutableList<item> = ArrayList();
             try {
                 var obj = JSONObject(readJSONFromAsset());
-                temp = getListQuestionFromJson(obj.getString("result"));
-                for (a in 1..15) {
+                Result = getListQuestionFromJson(obj.getString("result"));
+                Result = Result.shuffle()
+               /* for (a in 1..15) {
                     val number = temp.randomElement()
                     Result.add(number as item);
                     temp.remove(number as item)
 
-                }
+                }*/
 
             } catch (e: Exception) {
 
