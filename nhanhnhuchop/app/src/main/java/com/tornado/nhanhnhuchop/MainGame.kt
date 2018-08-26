@@ -1,16 +1,18 @@
 package com.tornado.nhanhnhuchop
 
+import android.content.Context
 import android.content.Intent
-import android.os.AsyncTask
+import android.graphics.drawable.AnimationDrawable
+import android.os.*
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
 import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
 import android.util.JsonReader
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.FrameLayout
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.view.Window
+import android.view.WindowManager
+import android.view.animation.AnimationUtils
+import android.widget.*
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
@@ -19,7 +21,19 @@ import org.json.JSONObject
 import java.io.InputStream
 import java.io.StringReader
 import com.google.android.gms.ads.*
+import com.tornado.nhanhnhuchop.utils.PREFS_FILENAME
+import com.tornado.nhanhnhuchop.utils.PREFS_ID
 import java.util.*
+import kotlin.ranges.CharRange.Companion.EMPTY
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
+import android.view.animation.BounceInterpolator
+import com.tornado.nhanhnhuchop.utils.dp
+import com.tornado.nhanhnhuchop.utils.px
+import kotlinx.coroutines.experimental.delay
+import java.lang.Float.intBitsToFloat
+
 
 class MainGame : AppCompatActivity(), View.OnClickListener {
 
@@ -48,16 +62,32 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     var listquestion: MutableList<item> = ArrayList();
     var numberquestion: Int =15
     var currentquestion: Int =0
-    var maxquesion: Int =15
+    var maxquesion: Int =10
     var Score: Int =0
+
 
     var txtquestion:TextView? = null;
     var container:FrameLayout? = null;
+    var time:TextView? = null;
+    var avatar:ImageView? = null;
+
 
     private var btnAnswer1: Button? = null
     private var btnAnswer2: Button? = null
     private var btnAnswer3: Button? = null
     private var btnAnswer4: Button? = null
+   // private var bgImage:ImageView?=null
+    private var bgImage: MutableList<ImageView?> = ArrayList();
+
+    private fun hideStatusBar(){
+        if (Build.VERSION.SDK_INT >= 16) {
+            getWindow().setFlags(AccessibilityNodeInfoCompat.ACTION_NEXT_HTML_ELEMENT, AccessibilityNodeInfoCompat.ACTION_NEXT_HTML_ELEMENT);
+            getWindow().getDecorView().setSystemUiVisibility(3328);
+        }else{
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+    }
 
     fun InitGame()
     {
@@ -65,6 +95,39 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         currentquestion= 0
         maxquesion = 15
         Score = 0
+
+        object : CountDownTimer(60000, 1000) {
+
+            override fun onTick(millisUntilFinished: Long) {
+                time?.setText("" + millisUntilFinished / 1000)
+                //here you can have your logic to set text to edittext
+            }
+
+            override fun onFinish() {
+                time?.setText("0")
+            }
+
+        }.start()
+    }
+
+    fun FadeIn()
+    {
+        var animation = AnimationUtils.loadAnimation(this@MainGame, R.anim.fade_in)
+        txtquestion?.startAnimation(animation)
+        btnAnswer1?.startAnimation(animation)
+        btnAnswer2?.startAnimation(animation)
+        btnAnswer3?.startAnimation(animation)
+        btnAnswer4?.startAnimation(animation)
+    }
+
+    fun FadeOut()
+    {
+        val animation = AnimationUtils.loadAnimation(this@MainGame, R.anim.fade_out)
+        txtquestion?.startAnimation(animation)
+        btnAnswer1?.startAnimation(animation)
+        btnAnswer2?.startAnimation(animation)
+        btnAnswer3?.startAnimation(animation)
+        btnAnswer4?.startAnimation(animation)
     }
 
 
@@ -90,10 +153,34 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        hideStatusBar()
         setContentView(R.layout.activity_main_game)
         val adView = findViewById(R.id.adview) as AdView
         InitGame()
          txtquestion = findViewById(R.id.question) as TextView
+         time = findViewById(R.id.time) as TextView
+        avatar = findViewById(R.id.avatar) as ImageView
+        avatar?.setY((495.px).toFloat());
+        var score1 = findViewById(R.id.score1) as ImageView
+        var score2 = findViewById(R.id.score2) as ImageView
+        var score3 = findViewById(R.id.score3) as ImageView
+        var score4 = findViewById(R.id.score4) as ImageView
+        var score5 = findViewById(R.id.score5) as ImageView
+        var score6 = findViewById(R.id.score6) as ImageView
+        var score7 = findViewById(R.id.score7) as ImageView
+        var score8 = findViewById(R.id.score8) as ImageView
+        var score9 = findViewById(R.id.score9) as ImageView
+        var score10 = findViewById(R.id.score10) as ImageView
+        bgImage.add(score1)
+        bgImage.add(score2)
+        bgImage.add(score3)
+        bgImage.add(score4)
+        bgImage.add(score5)
+        bgImage.add(score6)
+        bgImage.add(score7)
+        bgImage.add(score8)
+        bgImage.add(score9)
+        bgImage.add(score10)
          //container = findViewById(R.id.container) as FrameLayout
 
         btnAnswer1 = findViewById(R.id.answer1) as Button
@@ -133,28 +220,68 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         return itemList
     }
 
+    private fun translateup(score:Int) {
+        var from:Int =495.px - (45.px*score)
+        var to:Int = 450.px - (45.px*score)
+
+        val ty1 = ObjectAnimator.ofFloat(avatar, View.TRANSLATION_Y, from.toFloat(), to.toFloat())
+        ty1.setDuration(1000)
+        ty1.interpolator = BounceInterpolator()
+        ty1.start()
+    }
+
+    private fun translatedown(score:Int) {
+        var from:Int =455.px - (45.px*score)
+        var to:Int = 495.px
+
+        val ty1 = ObjectAnimator.ofFloat(avatar, View.TRANSLATION_Y, from.toFloat(), to.toFloat())
+        ty1.setDuration(1000)
+        ty1.interpolator = BounceInterpolator()
+        ty1.start()
+    }
+
+
     fun CheckAnswer( ans:Int){
         var result: Boolean? = false
-
+        FadeOut()
         if(ans == listquestion.get(currentquestion).rightanswer)
         {
+            bgImage.get(Score)?.setBackgroundResource(R.drawable.upscore)
+            val bgImage = bgImage.get(Score)?.background as AnimationDrawable
+            bgImage.start()
+            translateup(Score)
             Score++
 
+        }
+        else
+        {
+            translatedown(Score)
+            while(Score >0) {
 
+                    bgImage?.get(Score)?.setBackgroundResource(R.drawable.downscore)
+                    val bgImage = bgImage?.get(Score)?.background as AnimationDrawable
+                    bgImage.start()
+                    Score--
+
+
+            }
+            bgImage?.get(Score)?.setBackgroundResource(R.drawable.downscore)
+            val bgImage = bgImage?.get(Score)?.background as AnimationDrawable
+            bgImage.start()
         }
-        else
-        {
-            Score =0
-        }
-        if(currentquestion < maxquesion )
-        {
-            currentquestion++
-            nextquestion()
-        }
-        else
-        {
-            GameOver()
-        }
+        Handler().postDelayed({
+            if(currentquestion < maxquesion )
+            {
+                currentquestion++
+                nextquestion()
+            }
+            else
+            {
+                GameOver()
+            }
+            FadeIn()
+        }, 500)
+
 
     }
 
@@ -168,7 +295,40 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     fun readJSONFromAsset(): String? {
         var json: String? = null
         try {
-            val i = (1..3).random()
+
+            var i = (1..3).random()
+            val sharedPreferences = getSharedPreferences(PREFS_FILENAME, Context.MODE_PRIVATE)
+
+            var id:String = sharedPreferences.getString(PREFS_ID, "")
+            if(id.compareTo("")!=0)
+            {
+                val separate1 = id.split(",".toRegex())
+                var check = false
+                while (!check) {
+                    for (temp in separate1) {
+                        if (temp.compareTo(i.toString()) == 0) {
+                            i = (1..3).random();
+                            check = false;
+                            break;
+                        }
+                        check = true;
+                    }
+                    if(check == true) {
+                        id = id + ",$i";
+                        if (separate1.size == 2)
+                        {
+                            id = "";
+                        }
+                    }
+                }
+            }
+            else {
+                id =  "$i"
+            }
+            val editor = sharedPreferences.edit()
+            editor.putString(PREFS_ID, id)
+            editor.apply()
+
             var url:String = "filename$i.json";
             val  inputStream: InputStream = assets.open(url)
             json = inputStream.bufferedReader().use{it.readText()}

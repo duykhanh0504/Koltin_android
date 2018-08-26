@@ -16,7 +16,211 @@
         android:layout_gravity="top"
         ads:adSize="SMART_BANNER"
         ads:adUnitId="@string/banner_ad_unit_id" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <FrameLayout
+            android:layout_width="70dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_gravity="right"
+                android:background="@drawable/upscore"
+                android:layout_width="45dp"
+                android:layout_height="45dp" />
+        <LinearLayout
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <FrameLayout
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp">
+                <ImageView
+                    android:id="@+id/score10"
+                    android:background="@drawable/upscore"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="10"
+                    android:textAlignment="center"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="45dp"
+                android:layout_height="45dp">
+                <ImageView
+                    android:id="@+id/score9"
+                    android:background="@drawable/upscore"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="9"
+                    android:textAlignment="center"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="45dp"
+                android:layout_height="45dp">
+                <ImageView
+                    android:id="@+id/score8"
+                    android:background="@drawable/upscore"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="8"
+                    android:textAlignment="center"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="45dp"
+                android:layout_height="45dp">
+                <ImageView
+                    android:id="@+id/score7"
+                    android:background="@drawable/upscore"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:gravity="center"
+                    android:text="7"
+                    android:textAlignment="center" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="45dp"
+                android:layout_height="45dp">
+                <ImageView
+                    android:id="@+id/score6"
+                    android:background="@drawable/upscore"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="6"
+                    android:textAlignment="center"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="45dp"
+                android:layout_height="45dp">
+                <ImageView
+                    android:id="@+id/score5"
+                    android:background="@drawable/upscore"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="5"
+                    android:textAlignment="center"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="45dp"
+                android:layout_height="45dp">
+                <ImageView
+                    android:id="@+id/score4"
+                    android:background="@drawable/upscore"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="4"
+                    android:textAlignment="center"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="45dp"
+                android:layout_height="45dp">
+                <ImageView
+                    android:id="@+id/score3"
+                    android:background="@drawable/upscore"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textAlignment="center"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="45dp"
+                android:layout_height="45dp">
+                <ImageView
+                    android:id="@+id/score2"
+                    android:background="@drawable/upscore"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textAlignment="center"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="45dp"
+                android:layout_height="45dp">
+                <ImageView
+                    android:id="@+id/score1"
+                    android:background="@drawable/upscore"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                   />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textAlignment="center"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="45dp"
+                android:layout_height="45dp">
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text=""
+                    android:textAlignment="center"/>
+            </FrameLayout>
+
+        </LinearLayout>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                />
+        </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="time"
+        android:textSize="20sp"
+        android:gravity="end"/>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
@@ -56,6 +260,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+    </LinearLayout>
+    </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
