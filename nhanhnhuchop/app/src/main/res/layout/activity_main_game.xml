@@ -21,18 +21,13 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
         <FrameLayout
-            android:layout_width="70dp"
+            android:layout_width="85dp"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:layout_marginTop="45dp">
-            <ImageView
-                android:id="@+id/avatar"
-                android:layout_gravity="right"
-                android:background="@drawable/upscore"
-                android:layout_width="45dp"
-                android:layout_height="45dp" />
+
         <LinearLayout
-            android:layout_width="70dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical">
             <FrameLayout
@@ -204,9 +199,11 @@
 
         </LinearLayout>
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                />
+                android:id="@+id/avatar"
+                android:layout_gravity="right"
+                android:background="@drawable/upscore"
+                android:layout_width="45dp"
+                android:layout_height="45dp" />
         </FrameLayout>
 
     <LinearLayout
@@ -221,25 +218,29 @@
         android:id="@+id/time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
         android:text="time"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:gravity="end"/>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_gravity="bottom"
-        android:layout_weight="2.2">
+        android:layout_weight="2"
+        android:layout_marginRight="10dp">
         <TextView
             android:id="@+id/question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="text"
+            android:text=""
             android:textSize="20sp"
             android:textAlignment="center"/>
     </FrameLayout>
 
     <LinearLayout
         android:id="@+id/container"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"

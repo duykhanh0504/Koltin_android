@@ -7,10 +7,6 @@ import android.os.*
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.JsonReader
-import android.view.View
-import android.view.ViewGroup
-import android.view.Window
-import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import android.widget.*
 import com.google.gson.Gson
@@ -28,6 +24,8 @@ import kotlin.ranges.CharRange.Companion.EMPTY
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
+import android.support.v7.app.AlertDialog
+import android.view.*
 import android.view.animation.BounceInterpolator
 import com.tornado.nhanhnhuchop.utils.dp
 import com.tornado.nhanhnhuchop.utils.px
@@ -70,6 +68,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     var container:FrameLayout? = null;
     var time:TextView? = null;
     var avatar:ImageView? = null;
+    var loginDialog: AlertDialog? = null;
 
 
     private var btnAnswer1: Button? = null
@@ -155,12 +154,20 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         hideStatusBar()
         setContentView(R.layout.activity_main_game)
+
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        val inflater: LayoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val dialogLayout: View = inflater.inflate(R.layout.dialog_custom, null)
+        builder.setView(dialogLayout)
+        builder.setCancelable(false)
+        loginDialog = builder.create()
+
         val adView = findViewById(R.id.adview) as AdView
         InitGame()
          txtquestion = findViewById(R.id.question) as TextView
          time = findViewById(R.id.time) as TextView
         avatar = findViewById(R.id.avatar) as ImageView
-        avatar?.setY((495.px).toFloat());
+        avatar?.setY((475.px).toFloat());
         var score1 = findViewById(R.id.score1) as ImageView
         var score2 = findViewById(R.id.score2) as ImageView
         var score3 = findViewById(R.id.score3) as ImageView
@@ -207,6 +214,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
 
         AsyncTaskLoading().execute();
 
+
     }
 
     fun ClosedRange<Int>.random() =
@@ -221,8 +229,8 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun translateup(score:Int) {
-        var from:Int =495.px - (45.px*score)
-        var to:Int = 450.px - (45.px*score)
+        var from:Int =475.px - (45.px*score)
+        var to:Int = 430.px - (45.px*score)
 
         val ty1 = ObjectAnimator.ofFloat(avatar, View.TRANSLATION_Y, from.toFloat(), to.toFloat())
         ty1.setDuration(1000)
@@ -231,8 +239,8 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun translatedown(score:Int) {
-        var from:Int =455.px - (45.px*score)
-        var to:Int = 495.px
+        var from:Int =435.px - (45.px*score)
+        var to:Int = 475.px
 
         val ty1 = ObjectAnimator.ofFloat(avatar, View.TRANSLATION_Y, from.toFloat(), to.toFloat())
         ty1.setDuration(1000)
@@ -393,6 +401,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
             super.onPostExecute(result)
             listquestion = result
             nextquestion()
+            loginDialog?.dismiss()
 
         }
     }
