@@ -1,11 +1,14 @@
 package com.tornado.nhanhnhuchop
 
 import android.animation.ObjectAnimator
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
+import android.support.v7.app.AlertDialog
+import android.view.LayoutInflater
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
@@ -19,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     private var btnStart: Button? = null
     private var btnHignscore: Button? = null
+    var loginDialog: AlertDialog? = null;
 
     private fun hideStatusBar(){
         if (Build.VERSION.SDK_INT >= 16) {
@@ -59,6 +63,15 @@ class MainActivity : AppCompatActivity() {
         btnStart!!.setOnClickListener {
             val intent = Intent(this, MainGame::class.java)
             startActivity(intent);
+        }
+        btnHignscore!!.setOnClickListener{
+            val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+            val inflater: LayoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val dialogLayout: View = inflater.inflate(R.layout.dialog_about, null)
+            builder.setView(dialogLayout)
+            builder.setCancelable(true)
+            loginDialog = builder.create()
+            loginDialog?.show()
         }
         translatestart()
         translatehighscore()

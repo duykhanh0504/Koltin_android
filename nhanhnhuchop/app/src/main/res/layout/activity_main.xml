@@ -7,6 +7,7 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".MainActivity"
+    android:background="@drawable/background"
    >
     <com.google.android.gms.ads.AdView
         android:id="@+id/adview"
@@ -42,6 +43,6 @@
             android:layout_marginTop="20dp"
             android:translationX="-300dp"
             android:minWidth="200dp"
-            android:text="HighScore" />
+            android:text="About" />
     </LinearLayout>
 </LinearLayout>
