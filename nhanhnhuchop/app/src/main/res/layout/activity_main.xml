@@ -32,6 +32,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="150dp"
             android:translationX="300dp"
+            android:background="@drawable/button_green"
             android:minWidth="200dp"
             android:text="Start Game" />
 
@@ -41,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
+            android:background="@drawable/button_green"
             android:translationX="-300dp"
             android:minWidth="200dp"
             android:text="About" />

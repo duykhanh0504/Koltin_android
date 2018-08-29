@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".MainGame">
+    tools:context=".MainGame"
+    android:background="@drawable/background1">
     <com.google.android.gms.ads.AdView
         android:id="@+id/adview"
         android:layout_width="match_parent"
@@ -24,15 +25,15 @@
             android:layout_width="85dp"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
-            android:layout_marginTop="45dp">
+            android:layout_marginTop="35dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical">
             <FrameLayout
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
                 <ImageView
                     android:id="@+id/score10"
@@ -42,13 +43,15 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:layout_gravity="center"
                     android:text="10"
+                    android:textSize="25sp"
+                    android:textColor="#fff"
                     android:textAlignment="center"/>
             </FrameLayout>
             <FrameLayout
-                android:layout_width="45dp"
-                android:layout_height="45dp">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
                 <ImageView
                     android:id="@+id/score9"
                     android:background="@drawable/upscore"
@@ -57,8 +60,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:layout_gravity="center"
                     android:text="9"
+                    android:textSize="25sp"
+                    android:textColor="#fff"
                     android:textAlignment="center"/>
             </FrameLayout>
             <FrameLayout
@@ -74,6 +79,8 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="8"
+                    android:textSize="25sp"
+                    android:textColor="#fff"
                     android:textAlignment="center"/>
             </FrameLayout>
             <FrameLayout
@@ -90,6 +97,8 @@
                     android:layout_height="49dp"
                     android:gravity="center"
                     android:text="7"
+                    android:textSize="25sp"
+                    android:textColor="#fff"
                     android:textAlignment="center" />
             </FrameLayout>
             <FrameLayout
@@ -105,6 +114,8 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="6"
+                    android:textSize="25sp"
+                    android:textColor="#fff"
                     android:textAlignment="center"/>
             </FrameLayout>
             <FrameLayout
@@ -120,6 +131,8 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="5"
+                    android:textSize="25sp"
+                    android:textColor="#fff"
                     android:textAlignment="center"/>
             </FrameLayout>
             <FrameLayout
@@ -135,6 +148,8 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="4"
+                    android:textSize="25sp"
+                    android:textColor="#fff"
                     android:textAlignment="center"/>
             </FrameLayout>
             <FrameLayout
@@ -150,6 +165,8 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="3"
+                    android:textSize="25sp"
+                    android:textColor="#fff"
                     android:textAlignment="center"/>
             </FrameLayout>
             <FrameLayout
@@ -165,6 +182,8 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="2"
+                    android:textSize="25sp"
+                    android:textColor="#fff"
                     android:textAlignment="center"/>
             </FrameLayout>
             <FrameLayout
@@ -181,6 +200,8 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="1"
+                    android:textSize="25sp"
+                    android:textColor="#fff"
                     android:textAlignment="center"/>
             </FrameLayout>
             <FrameLayout
@@ -188,20 +209,16 @@
                 android:layout_height="45dp">
                 <ImageView
                     android:layout_width="45dp"
-                    android:layout_height="45dp" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text=""
-                    android:textAlignment="center"/>
+                    android:layout_height="45dp"
+                    android:background="@drawable/icon_start"/>
+
             </FrameLayout>
 
         </LinearLayout>
             <ImageView
                 android:id="@+id/avatar"
                 android:layout_gravity="right"
-                android:background="@drawable/upscore"
+                android:background="@drawable/one"
                 android:layout_width="45dp"
                 android:layout_height="45dp" />
         </FrameLayout>
@@ -218,51 +235,64 @@
         android:id="@+id/time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="35dp"
         android:text="time"
-        android:textSize="30sp"
+        android:textColor="#00EE00"
+        android:textSize="25sp"
         android:gravity="end"/>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_gravity="bottom"
-        android:layout_weight="2"
-        android:layout_marginRight="10dp">
+        android:layout_weight="1.6"
+        android:background="#CCCCFFFF"
+        android:layout_marginRight="10dp"
+        android:foregroundGravity="center">
         <TextView
+            android:layout_gravity="center"
             android:id="@+id/question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
+            android:textColor="#000000"
             android:textSize="20sp"
             android:textAlignment="center"/>
     </FrameLayout>
 
     <LinearLayout
         android:id="@+id/container"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:orientation="vertical">
         <Button
             android:id="@+id/answer1"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
+            android:background="@drawable/button_green"
             android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/answer2"
             android:layout_width="match_parent"
+            android:background="@drawable/button_green"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/answer3"
             android:layout_width="match_parent"
+            android:background="@drawable/button_green"
+            android:layout_marginBottom="5dp"
             android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/answer4"
             android:layout_width="match_parent"
+            android:background="@drawable/button_green"
             android:layout_height="wrap_content" />
 
     </LinearLayout>

@@ -17,8 +17,6 @@ import org.json.JSONObject
 import java.io.InputStream
 import java.io.StringReader
 import com.google.android.gms.ads.*
-import com.tornado.nhanhnhuchop.utils.PREFS_FILENAME
-import com.tornado.nhanhnhuchop.utils.PREFS_ID
 import java.util.*
 import kotlin.ranges.CharRange.Companion.EMPTY
 import android.animation.Animator
@@ -27,8 +25,7 @@ import android.animation.ObjectAnimator
 import android.support.v7.app.AlertDialog
 import android.view.*
 import android.view.animation.BounceInterpolator
-import com.tornado.nhanhnhuchop.utils.dp
-import com.tornado.nhanhnhuchop.utils.px
+import com.tornado.nhanhnhuchop.utils.*
 import kotlinx.coroutines.experimental.delay
 import java.lang.Float.intBitsToFloat
 
@@ -70,6 +67,9 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     var avatar:ImageView? = null;
     var loginDialog: AlertDialog? = null;
 
+    private var isPaused = false
+    private var resumeFromMillis:Long = 0
+
 
     private var btnAnswer1: Button? = null
     private var btnAnswer2: Button? = null
@@ -88,14 +88,41 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    private fun timer(millisInFuture:Long,countDownInterval:Long):CountDownTimer{
+        return object: CountDownTimer(millisInFuture,countDownInterval){
+            override fun onTick(millisUntilFinished: Long) {
+
+                val timeRemaining = "Time : " + millisUntilFinished / 1000
+
+                if (isPaused){
+
+                    resumeFromMillis = millisUntilFinished
+                    cancel()
+                }else{
+                    time?.setText(timeRemaining)
+                }
+
+                //here you can have your logic to set text to edittext
+            }
+
+            override fun onFinish() {
+                time?.setText("0")
+                GameOver()
+            }
+
+        }
+
+    }
+
     fun InitGame()
     {
         numberquestion = 15
         currentquestion= 0
-        maxquesion = 15
+        maxquesion = 10
         Score = 0
+        avatar?.setBackgroundResource(R.drawable.one)
 
-        object : CountDownTimer(60000, 1000) {
+        /*object : CountDownTimer(60000, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
                 time?.setText("" + millisUntilFinished / 1000)
@@ -106,7 +133,9 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
                 time?.setText("0")
             }
 
-        }.start()
+        }.start()*/
+        timer(60000,1000).start();
+
     }
 
     fun FadeIn()
@@ -188,6 +217,37 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         bgImage.add(score8)
         bgImage.add(score9)
         bgImage.add(score10)
+
+        if(width == 480 || height == 800)
+        {
+            val layoutParams:FrameLayout.LayoutParams =  FrameLayout.LayoutParams(38.px, 38.px);
+            score1.setLayoutParams(layoutParams)
+            score2.setLayoutParams(layoutParams)
+            score3.setLayoutParams(layoutParams)
+            score4.setLayoutParams(layoutParams)
+            score5.setLayoutParams(layoutParams)
+            score6.setLayoutParams(layoutParams)
+            score7.setLayoutParams(layoutParams)
+            score8.setLayoutParams(layoutParams)
+            score9.setLayoutParams(layoutParams)
+            score10.setLayoutParams(layoutParams)
+
+        }
+        else if(width == 720 || height == 1280)
+        {
+            val layoutParams:FrameLayout.LayoutParams =  FrameLayout.LayoutParams(40.px, 40.px);
+            score1.setLayoutParams(layoutParams)
+            score2.setLayoutParams(layoutParams)
+            score3.setLayoutParams(layoutParams)
+            score4.setLayoutParams(layoutParams)
+            score5.setLayoutParams(layoutParams)
+            score6.setLayoutParams(layoutParams)
+            score7.setLayoutParams(layoutParams)
+            score8.setLayoutParams(layoutParams)
+            score9.setLayoutParams(layoutParams)
+            score10.setLayoutParams(layoutParams)
+
+        }
          //container = findViewById(R.id.container) as FrameLayout
 
         btnAnswer1 = findViewById(R.id.answer1) as Button
@@ -258,7 +318,19 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
             val bgImage = bgImage.get(Score)?.background as AnimationDrawable
             bgImage.start()
             translateup(Score)
+            if(Score > 3  && Score < 7  )
+            {
+                avatar?.setBackgroundResource(R.drawable.two)
+            }
+            else if(Score > 6 )
+            {
+                avatar?.setBackgroundResource(R.drawable.three)
+            }
             Score++
+            if(Score ==maxquesion)
+            {
+                GameOver()
+            }
 
         }
         else
@@ -273,6 +345,9 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
 
 
             }
+
+            avatar?.setBackgroundResource(R.drawable.one)
+
             bgImage?.get(Score)?.setBackgroundResource(R.drawable.downscore)
             val bgImage = bgImage?.get(Score)?.background as AnimationDrawable
             bgImage.start()
