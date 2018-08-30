@@ -27,8 +27,11 @@ import android.view.*
 import android.view.animation.BounceInterpolator
 import com.tornado.nhanhnhuchop.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main_game.*
+import kotlinx.android.synthetic.main.pause_dialog.view.*
 import kotlinx.coroutines.experimental.delay
 import java.lang.Float.intBitsToFloat
+import kotlin.concurrent.schedule
 
 
 class MainGame : AppCompatActivity(), View.OnClickListener {
@@ -70,14 +73,22 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     var avatar:ImageView? = null;
     var loginDialog: AlertDialog? = null;
 
+    var pauseDialog: AlertDialog? = null;
+
     private var isPaused = false
     private var resumeFromMillis:Long = 0
 
+    private var btnpause:ImageButton? =null
 
-    private var btnAnswer1: Button? = null
-    private var btnAnswer2: Button? = null
-    private var btnAnswer3: Button? = null
-    private var btnAnswer4: Button? = null
+    private var btnAnswer1: FrameLayout? = null
+    private var btnAnswer2: FrameLayout? = null
+    private var btnAnswer3: FrameLayout? = null
+    private var btnAnswer4: FrameLayout? = null
+
+    private var txtAnswer1: TextView? = null
+    private var txtAnswer2: TextView? = null
+    private var txtAnswer3: TextView? = null
+    private var txtAnswer4: TextView? = null
    // private var bgImage:ImageView?=null
     private var bgImage: MutableList<ImageView?> = ArrayList();
 
@@ -103,7 +114,10 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
                     cancel()
                   //  GameOver()
                 }else{
-
+                    if(millisUntilFinished / 1000 < 16)
+                    {
+                        time?.setTextColor(getColor(R.color.red));
+                    }
                     time?.setText(timeRemaining)
                 }
 
@@ -118,6 +132,29 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
 
         }
 
+    val timerforanswer = object: CountDownTimer(1000,1000){
+        override fun onTick(millisUntilFinished: Long) {
+
+        }
+
+        override fun onFinish() {
+            FadeOut()
+
+
+            if (currentquestion < numberquestion) {
+                currentquestion++
+                nextquestion()
+            } else {
+                timer1.start()
+                GameOver()
+            }
+            Timer().schedule(100) {
+                FadeIn()
+            }
+            cancel()
+        }
+
+    }
 
 
     fun InitGame()
@@ -129,6 +166,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         HighScore = 0
         circlescore?.visibility = View.GONE
         avatar?.setBackgroundResource(R.drawable.one)
+
         isPaused = false
 
         /*object : CountDownTimer(60000, 1000) {
@@ -149,22 +187,24 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
 
     fun FadeIn()
     {
+        this@MainGame.runOnUiThread(java.lang.Runnable {
         var animation = AnimationUtils.loadAnimation(this@MainGame, R.anim.fade_in)
         txtquestion?.startAnimation(animation)
-        btnAnswer1?.startAnimation(animation)
-        btnAnswer2?.startAnimation(animation)
-        btnAnswer3?.startAnimation(animation)
-        btnAnswer4?.startAnimation(animation)
+        txtAnswer1?.startAnimation(animation)
+            txtAnswer2?.startAnimation(animation)
+            txtAnswer3?.startAnimation(animation)
+            txtAnswer4?.startAnimation(animation)
+    })
     }
 
     fun FadeOut()
     {
         val animation = AnimationUtils.loadAnimation(this@MainGame, R.anim.fade_out)
         txtquestion?.startAnimation(animation)
-        btnAnswer1?.startAnimation(animation)
-        btnAnswer2?.startAnimation(animation)
-        btnAnswer3?.startAnimation(animation)
-        btnAnswer4?.startAnimation(animation)
+        txtAnswer1?.startAnimation(animation)
+        txtAnswer2?.startAnimation(animation)
+        txtAnswer3?.startAnimation(animation)
+        txtAnswer4?.startAnimation(animation)
     }
 
 
@@ -201,6 +241,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         loginDialog = builder.create()
 
         val adView = findViewById(R.id.adview) as AdView
+        btnpause = findViewById(R.id.btnpause) as ImageButton
         InitGame()
          txtquestion = findViewById(R.id.question) as TextView
          time = findViewById(R.id.time) as TextView
@@ -261,22 +302,50 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         }
          //container = findViewById(R.id.container) as FrameLayout
 
-        btnAnswer1 = findViewById(R.id.answer1) as Button
-        btnAnswer2 = findViewById(R.id.answer2) as Button
-        btnAnswer3 = findViewById(R.id.answer3) as Button
-        btnAnswer4 = findViewById(R.id.answer4) as Button
+        btnAnswer1 = findViewById(R.id.answer1) as FrameLayout
+        btnAnswer2 = findViewById(R.id.answer2) as FrameLayout
+        btnAnswer3 = findViewById(R.id.answer3) as FrameLayout
+        btnAnswer4 = findViewById(R.id.answer4) as FrameLayout
+
+        txtAnswer1 = findViewById(R.id.txtanswer1) as TextView
+        txtAnswer2 = findViewById(R.id.txtanswer2) as TextView
+        txtAnswer3 = findViewById(R.id.txtanswer3) as TextView
+        txtAnswer4 = findViewById(R.id.txtanswer4) as TextView
 
         btnAnswer1!!.setOnClickListener {
+            btnAnswer1?.setBackgroundResource(R.drawable.button_blue)
             CheckAnswer( 0)
         }
         btnAnswer2!!.setOnClickListener {
+            btnAnswer2?.setBackgroundResource(R.drawable.button_blue)
             CheckAnswer( 1)
         }
         btnAnswer3!!.setOnClickListener {
+            btnAnswer3?.setBackgroundResource(R.drawable.button_blue)
             CheckAnswer( 2)
         }
-        btnAnswer3!!.setOnClickListener {
+        btnAnswer4!!.setOnClickListener {
+            btnAnswer4?.setBackgroundResource(R.drawable.button_blue)
             CheckAnswer( 3)
+        }
+8
+        btnpause!!.setOnClickListener {
+            val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+            val inflater: LayoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val dialogLayout: View = inflater.inflate(R.layout.pause_dialog, null)
+            builder.setView(dialogLayout)
+            builder.setCancelable(true)
+            pauseDialog = builder.create()
+            pauseDialog?.show()
+            //login button click of custom layout
+            dialogLayout.tiep.setOnClickListener {
+                pauseDialog?.dismiss()
+            }
+            //cancel button click of custom layout
+            dialogLayout.thoat.setOnClickListener {
+                //dismiss dialog
+
+            }
         }
 
         val adRequest = AdRequest.Builder()
@@ -323,10 +392,8 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-
-    fun CheckAnswer( ans:Int){
-        var result: Boolean? = false
-        FadeOut()
+    fun Next(ans:Int)
+    {
         if(ans == listquestion.get(currentquestion).rightanswer)
         {
 
@@ -364,10 +431,10 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
             translatedown(Score)
             while(Score >0) {
 
-                    bgImage?.get(Score)?.setBackgroundResource(R.drawable.downscore)
-                    val bgImage = bgImage?.get(Score)?.background as AnimationDrawable
-                    bgImage.start()
-                    Score--
+                bgImage?.get(Score)?.setBackgroundResource(R.drawable.downscore)
+                val bgImage = bgImage?.get(Score)?.background as AnimationDrawable
+                bgImage.start()
+                Score--
 
 
             }
@@ -378,18 +445,36 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
             val bgImage = bgImage?.get(Score)?.background as AnimationDrawable
             bgImage.start()
         }
+    }
 
-            if(currentquestion < numberquestion )
+    fun CheckAnswer( ans:Int){
+        var result: Boolean? = false
+        btnAnswer1?.isEnabled = false
+        btnAnswer2?.isEnabled = false
+        btnAnswer3?.isEnabled = false
+        btnAnswer4?.isEnabled = false
+
+        if(ans != listquestion.get(currentquestion).rightanswer)
+        {
+            if(listquestion.get(currentquestion).rightanswer == 0)
             {
-                currentquestion++
-                nextquestion()
+                btnAnswer1?.setBackgroundResource(R.drawable.button_redans)
             }
-            else
+            if(listquestion.get(currentquestion).rightanswer == 1)
             {
-                timer1.start()
-                GameOver()
+                btnAnswer2?.setBackgroundResource(R.drawable.button_redans)
             }
-            FadeIn()
+            if(listquestion.get(currentquestion).rightanswer == 2)
+            {
+                btnAnswer3?.setBackgroundResource(R.drawable.button_redans)
+            }
+            if(listquestion.get(currentquestion).rightanswer == 3)
+            {
+                btnAnswer4?.setBackgroundResource(R.drawable.button_redans)
+            }
+        }
+        Next(ans)
+        timerforanswer.start()
 
 
     }
@@ -449,12 +534,21 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     }
 
     fun nextquestion(){
-        txtquestion?.text = listquestion.get(currentquestion).question
-        var array = listquestion.get(currentquestion).answer
-        btnAnswer1?.text = array.get(0);
-        btnAnswer2?.text = array.get(1);
-        btnAnswer3?.text = array.get(2);
-        btnAnswer4?.text = array.get(3);
+        btnAnswer1?.isEnabled = true
+        btnAnswer2?.isEnabled = true
+        btnAnswer3?.isEnabled = true
+        btnAnswer4?.isEnabled = true
+            btnAnswer1?.setBackgroundResource(R.drawable.button_green)
+            btnAnswer2?.setBackgroundResource(R.drawable.button_green)
+            btnAnswer3?.setBackgroundResource(R.drawable.button_green)
+            btnAnswer4?.setBackgroundResource(R.drawable.button_green)
+            txtquestion?.text = listquestion.get(currentquestion).question
+            var array = listquestion.get(currentquestion).answer
+            txtAnswer1?.text = array.get(0);
+            txtAnswer2?.text = array.get(1);
+            txtAnswer3?.text = array.get(2);
+            txtAnswer4?.text = array.get(3);
+
        /* var i =0;
         for ( temp in array) {
             val button_dynamic = Button(this)

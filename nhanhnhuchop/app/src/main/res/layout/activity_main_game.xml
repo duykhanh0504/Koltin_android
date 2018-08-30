@@ -249,6 +249,7 @@
     android:orientation="horizontal"
     android:weightSum="2">
     <ImageButton
+        android:id="@+id/btnpause"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_weight="0.1"/>
@@ -271,6 +272,7 @@
         android:layout_weight="1.6"
         android:background="#CCCCFFFF"
         android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
         android:foregroundGravity="center">
         <TextView
             android:layout_gravity="center"
@@ -291,35 +293,84 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:orientation="vertical">
-        <Button
+        <FrameLayout
             android:id="@+id/answer1"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/button_green"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/txtanswer1"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textAlignment="center"/>
+        </FrameLayout>
 
-        <Button
+        <FrameLayout
             android:id="@+id/answer2"
-            android:layout_width="match_parent"
-            android:background="@drawable/button_green"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/answer3"
             android:layout_width="match_parent"
             android:background="@drawable/button_green"
             android:layout_marginBottom="5dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/txtanswer2"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text=""
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textAlignment="center"/>
+        </FrameLayout>
 
-        <Button
+        <FrameLayout
+            android:id="@+id/answer3"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:background="@drawable/button_green"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/txtanswer3"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text=""
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textAlignment="center"/>
+        </FrameLayout>
+
+        <FrameLayout
             android:id="@+id/answer4"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:background="@drawable/button_green"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"/>
-
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:id="@+id/txtanswer4"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text=""
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textAlignment="center"/>
+        </FrameLayout>
     </LinearLayout>
     </LinearLayout>
     </LinearLayout>
