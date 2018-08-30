@@ -26,6 +26,7 @@ import android.support.v7.app.AlertDialog
 import android.view.*
 import android.view.animation.BounceInterpolator
 import com.tornado.nhanhnhuchop.utils.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.experimental.delay
 import java.lang.Float.intBitsToFloat
 
@@ -59,6 +60,8 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     var currentquestion: Int =0
     var maxquesion: Int =10
     var Score: Int =0
+    var HighScore: Int =0
+    var circlescore:ImageView? = null
 
 
     var txtquestion:TextView? = null;
@@ -88,17 +91,19 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun timer(millisInFuture:Long,countDownInterval:Long):CountDownTimer{
-        return object: CountDownTimer(millisInFuture,countDownInterval){
+
+        val timer1 = object: CountDownTimer(60000,1000){
             override fun onTick(millisUntilFinished: Long) {
 
                 val timeRemaining = "Time : " + millisUntilFinished / 1000
 
                 if (isPaused){
 
-                    resumeFromMillis = millisUntilFinished
+                    //resumeFromMillis = millisUntilFinished
                     cancel()
+                  //  GameOver()
                 }else{
+
                     time?.setText(timeRemaining)
                 }
 
@@ -107,12 +112,13 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
 
             override fun onFinish() {
                 time?.setText("0")
-                GameOver()
+                cancel()
+               GameOver()
             }
 
         }
 
-    }
+
 
     fun InitGame()
     {
@@ -120,7 +126,10 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         currentquestion= 0
         maxquesion = 10
         Score = 0
+        HighScore = 0
+        circlescore?.visibility = View.GONE
         avatar?.setBackgroundResource(R.drawable.one)
+        isPaused = false
 
         /*object : CountDownTimer(60000, 1000) {
 
@@ -134,7 +143,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
             }
 
         }.start()*/
-        timer(60000,1000).start();
+        timer1.start()
 
     }
 
@@ -207,6 +216,8 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         var score8 = findViewById(R.id.score8) as ImageView
         var score9 = findViewById(R.id.score9) as ImageView
         var score10 = findViewById(R.id.score10) as ImageView
+        circlescore = findViewById(R.id.circlescore) as ImageView
+
         bgImage.add(score1)
         bgImage.add(score2)
         bgImage.add(score3)
@@ -299,13 +310,17 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun translatedown(score:Int) {
-        var from:Int =435.px - (45.px*score)
-        var to:Int = 475.px
+        if(Score >0) {
+            circlescore?.visibility = View.VISIBLE
+            circlescore?.setY((475.px).toFloat() - (45.px * HighScore) + 30.px);
+            var from: Int = 435.px - (45.px * score)
+            var to: Int = 475.px
 
-        val ty1 = ObjectAnimator.ofFloat(avatar, View.TRANSLATION_Y, from.toFloat(), to.toFloat())
-        ty1.setDuration(1000)
-        ty1.interpolator = BounceInterpolator()
-        ty1.start()
+            val ty1 = ObjectAnimator.ofFloat(avatar, View.TRANSLATION_Y, from.toFloat(), to.toFloat())
+            ty1.setDuration(1000)
+            ty1.interpolator = BounceInterpolator()
+            ty1.start()
+        }
     }
 
 
@@ -314,6 +329,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         FadeOut()
         if(ans == listquestion.get(currentquestion).rightanswer)
         {
+
             bgImage.get(Score)?.setBackgroundResource(R.drawable.upscore)
             val bgImage = bgImage.get(Score)?.background as AnimationDrawable
             bgImage.start()
@@ -327,8 +343,18 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
                 avatar?.setBackgroundResource(R.drawable.three)
             }
             Score++
+            if(Score > HighScore)
+            {
+                HighScore = Score
+                if(  circlescore?.visibility == View.VISIBLE)
+                {
+                    circlescore?.visibility = View.GONE
+                }
+
+            }
             if(Score ==maxquesion)
             {
+                timer1.cancel()
                 GameOver()
             }
 
@@ -352,18 +378,18 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
             val bgImage = bgImage?.get(Score)?.background as AnimationDrawable
             bgImage.start()
         }
-        Handler().postDelayed({
-            if(currentquestion < maxquesion )
+
+            if(currentquestion < numberquestion )
             {
                 currentquestion++
                 nextquestion()
             }
             else
             {
+                timer1.start()
                 GameOver()
             }
             FadeIn()
-        }, 500)
 
 
     }
