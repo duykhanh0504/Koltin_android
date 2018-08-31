@@ -250,6 +250,7 @@
     android:weightSum="2">
     <ImageButton
         android:id="@+id/btnpause"
+        android:background="@drawable/pause"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_weight="0.1"/>
@@ -270,10 +271,70 @@
         android:layout_height="250dp"
         android:layout_gravity="bottom"
         android:layout_weight="1.6"
-        android:background="#CCCCFFFF"
+        android:background="@drawable/content"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="5dp"
         android:foregroundGravity="center">
+        <LinearLayout
+            android:id="@+id/contentwin"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/win"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="right"
+                android:scaleType="centerInside"
+                />
+            <TextView
+                android:id="@+id/txtwin"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textAlignment="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/contentlose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom" >
+        <ImageView
+            android:id="@+id/lose"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerInside"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txtlose"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textAlignment="center"/>
+            <TextView
+                android:id="@+id/txtans"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                android:textAlignment="center"/>
+        </LinearLayout>
+        </LinearLayout>
         <TextView
             android:layout_gravity="center"
             android:id="@+id/question"

@@ -75,6 +75,9 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
 
     var pauseDialog: AlertDialog? = null;
 
+    val strwin = arrayOf<String>("Hay lắm","quá chuẩn","tuyệt vời", "ahaha...")
+    val strlose = arrayOf<String>("Dỏ ẹc","Dễ vậy mà ","Sai rồi nha","chúc may mắn lần sau ")
+
     private var isPaused = false
     private var resumeFromMillis:Long = 0
 
@@ -89,6 +92,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     private var txtAnswer2: TextView? = null
     private var txtAnswer3: TextView? = null
     private var txtAnswer4: TextView? = null
+    var timeRemaining:Long = 60
    // private var bgImage:ImageView?=null
     private var bgImage: MutableList<ImageView?> = ArrayList();
 
@@ -106,7 +110,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         val timer1 = object: CountDownTimer(60000,1000){
             override fun onTick(millisUntilFinished: Long) {
 
-                val timeRemaining = "Time : " + millisUntilFinished / 1000
+                 timeRemaining =  millisUntilFinished / 1000
 
                 if (isPaused){
 
@@ -116,9 +120,11 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
                 }else{
                     if(millisUntilFinished / 1000 < 16)
                     {
-                        time?.setTextColor(getColor(R.color.red));
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            time?.setTextColor(getColor(R.color.red))
+                        };
                     }
-                    time?.setText(timeRemaining)
+                    time?.setText("Time : " + timeRemaining)
                 }
 
                 //here you can have your logic to set text to edittext
@@ -132,6 +138,20 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
 
         }
 
+    val timewinlose = object: CountDownTimer(1000,1000){
+        override fun onTick(millisUntilFinished: Long) {
+
+
+            //here you can have your logic to set text to edittext
+        }
+
+        override fun onFinish() {
+
+            cancel()
+        }
+
+    }
+
     val timerforanswer = object: CountDownTimer(1000,1000){
         override fun onTick(millisUntilFinished: Long) {
 
@@ -140,7 +160,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         override fun onFinish() {
             FadeOut()
 
-
+            Timer().schedule(100) {
             if (currentquestion < numberquestion) {
                 currentquestion++
                 nextquestion()
@@ -148,7 +168,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
                 timer1.start()
                 GameOver()
             }
-            Timer().schedule(100) {
+
                 FadeIn()
             }
             cancel()
@@ -344,6 +364,9 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
             //cancel button click of custom layout
             dialogLayout.thoat.setOnClickListener {
                 //dismiss dialog
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent);
+                finish();
 
             }
         }
@@ -479,9 +502,36 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
 
     }
 
+    override fun onBackPressed() {
+            //super.onBackPressed()
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        val inflater: LayoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val dialogLayout: View = inflater.inflate(R.layout.pause_dialog, null)
+        builder.setView(dialogLayout)
+        builder.setCancelable(true)
+        pauseDialog = builder.create()
+        pauseDialog?.show()
+        //login button click of custom layout
+        dialogLayout.tiep.setOnClickListener {
+            pauseDialog?.dismiss()
+        }
+        //cancel button click of custom layout
+        dialogLayout.thoat.setOnClickListener {
+            //dismiss dialog
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent);
+            finish();
+
+        }
+
+    }
+
     fun GameOver()
     {
         val intent = Intent(this, GameOverActivity::class.java)
+        intent.putExtra("score",HighScore)
+        intent.putExtra("time", timeRemaining.toInt())
+        intent.putExtra("total",numberquestion)
         startActivity(intent);
         finish()
     }
@@ -534,10 +584,11 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     }
 
     fun nextquestion(){
-        btnAnswer1?.isEnabled = true
-        btnAnswer2?.isEnabled = true
-        btnAnswer3?.isEnabled = true
-        btnAnswer4?.isEnabled = true
+        this@MainGame.runOnUiThread(java.lang.Runnable {
+            btnAnswer1?.isEnabled = true
+            btnAnswer2?.isEnabled = true
+            btnAnswer3?.isEnabled = true
+            btnAnswer4?.isEnabled = true
             btnAnswer1?.setBackgroundResource(R.drawable.button_green)
             btnAnswer2?.setBackgroundResource(R.drawable.button_green)
             btnAnswer3?.setBackgroundResource(R.drawable.button_green)
@@ -548,6 +599,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
             txtAnswer2?.text = array.get(1);
             txtAnswer3?.text = array.get(2);
             txtAnswer4?.text = array.get(3);
+        })
 
        /* var i =0;
         for ( temp in array) {

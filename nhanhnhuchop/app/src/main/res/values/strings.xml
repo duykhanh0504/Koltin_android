@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">nhanhnhuchop</string>
     <string name="banner_ad_unit_id">ca-app-pub-8507216984714483/7653944847</string>
+
+    <string name="score">Bạn đã trả lời được <b>%d</b> câu</string>
+    <string name="timer">Trong thời gian <font color='red'>%d</font> giây</string>
+    <string name="total">tổng số câu hỏi : <font color='green'>20</font> </string>
 </resources>

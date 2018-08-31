@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity() {
         btnStart!!.setOnClickListener {
             val intent = Intent(this, MainGame::class.java)
             startActivity(intent);
+            finish()
         }
         btnHignscore!!.setOnClickListener{
             val builder: AlertDialog.Builder = AlertDialog.Builder(this)
