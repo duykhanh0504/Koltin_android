@@ -1,0 +1,23 @@
+{"result":[
+  {"id": 1, "answer": ["Chạy trên máy","chạy trên giường","chạy trong mơ","Chay quanh nhà"],"question": "Mỗi ngày bạn cần chạy bộ 5km nhưng bạn không bước chân ra khỏi nhà thì phải làm cách nào?","rightanswer": 0},
+  {"id": 2, "answer": ["Á hậu 4-5","Top 5","Top 10","Đồng Á hậu 4"],"question": "Kết quả chung cuộc của một cuộc thi hoa hậu được xếp hạng như sau: Người đẹp nhất là hoa hậu, người đẹp thứ 2 và thứ 3 lần lượt là á hậu 1 và á hậu 2, còn người đẹp thứ 4 và thứ 5 gọi là gì?","rightanswer": 2},
+  {"id": 3, "answer": ["5 =2","5 =20","5 =4","5 =1"],"question": "Nếu 1= 5, 2=10, 3=15, 4= 20 thì 5=?","rightanswer": 3},
+  {"id": 4, "answer": ["Ồn ào","Gió bay","Lá vàng","Kim Cương"],"question": "Người ta nói im lặng là vàng, vậy không im lặng là gì?","rightanswer": 0},
+  {"id": 5, "answer": ["Nông sản","lời nói","Vật chất","Tiền"],"question": "Thứ gì xuất khẩu thì được mà nhập khẩu thì không?","rightanswer": 1},
+  {"id": 6, "answer": ["Chữ Bat","chữ B","Con dơi","Con Chim"],"question": "Trước ngực Superman là chữ S, vật trước ngực Batman là chữ gì?","rightanswer": 2},
+  {"id": 7, "answer": ["2 cầu thủ","20 cầu thủ","23 cầu thủ","22 cầu thủ"],"question": "Trong một trận bóng đá, thông thường trên sân cỏ có tổng cộng bao nhiêu cầu thủ được sử dụng chân để chơi bóng?","rightanswer": 3},
+  {"id": 8, "answer": ["Tất cả đều được","Tay","Đầu","Cùi chỏ"],"question": "Bộ phận nào của cơ thể không được sử dụng trong bóng đá chuyên nghiệp?","rightanswer": 0},
+  {"id": 9, "answer": ["5 lá","4 lá","3 lá","2 lá"],"question": "Trong sân bóng đá thường có tất cả bao nhiêu lá cờ","rightanswer": 1},
+  {"id": 10, "answer": ["Chị Tố","Chị Cụi","Chị Hằng","Chị Nga"],"question": "Người phụ nữ tỏa sáng nhất vào đêm trung thu là ai?","rightanswer": 2},
+  {"id": 11, "answer": ["Bắng tráng","Bánh càng cua","Bánh cá","Bánh sừng trâu"],"question": "Bánh gì mang tên loài vật?","rightanswer": 3},
+  {"id": 12, "answer": ["Nga","Mỹ","Trung Quốc","Canada"],"question": "Quốc gia nào có diện tích lớn nhất thế giới?","rightanswer": 0},
+  {"id": 13, "answer": ["Nga","Mỹ","Trung Quốc","Canada"],"question": "Quốc gia nào có diện tích lớn nhì thế giới?","rightanswer": 3},
+  {"id": 14, "answer": ["Bắc cực","Nam cực","Đại tây dương","Bắc băng dương"],"question": "Băng tuyết trên trái đất có nhiều nhất ở đâu?","rightanswer": 1},
+  {"id": 15, "answer": ["Ba của anh rễ","Ba mình","Ông mình","Chú mình"],"question": "Ba vợ của anh rể là ai của mình?","rightanswer": 2},
+  {"id": 16, "answer": ["Tháng 11, 12","Tháng 2, 3","Tháng 12, 1","Tháng 7, 8"],"question": "2 tháng liên tiếp có 31 ngày?","rightanswer": 3},
+  {"id": 17, "answer": ["4 giác quan","5 giác quan","3 giác quan","2 giác quan"],"question": "Khi điều khiển xe máy thì con người buộc phải sử dụng mấy giác quan trên cơ thể?","rightanswer": 0},
+  {"id": 18, "answer": ["Danh từ","Động từ","Chủ ngữ","Vị ngữ"],"question": "Con ngựa đá con ngựa đá, con ngựa đá không đá con ngựa đá, từ 'đá'' thứ 4 là ?","rightanswer": 1},
+  {"id": 19, "answer": ["Có bụi","Có nước","hai H và 1 O","Có 1 C và hai O"],"question": "Trong nước đường có đường, trong nước muối có muối, vậy trong nước lọc có gì?","rightanswer": 2},
+  {"id": 20, "answer": ["15 quân 1 bên","2 quân","4 quân","Không đếm được"],"question": "Cờ caro có bao nhiêu quân cờ?","rightanswer": 3}
+]
+}

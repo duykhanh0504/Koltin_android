@@ -1,0 +1,23 @@
+{"result":[
+  {"id": 1, "answer": ["Vị trí nào cũng được","Tiền đạo","Trung vệ","Hậu vệ"],"question": "Đội trưởng của một đội bóng ở vị trí nào?","rightanswer": 0},
+  {"id": 2, "answer": ["Ngôn ngữ cơ thể","Có phiên dịch","Không cần giao tiếp","Viết ra bảng"],"question": "Nếu huấn luyện viên là người nước ngoài, vậy huấn luyện viên giao tiếp với cầu thủ bằng cách nào?","rightanswer": 1},
+  {"id": 3, "answer": ["Mùa đông và mùa thu","Mùa đông và mùa Xuân","Mùa đông và mùa hè","Mùa thu và mùa hè"],"question": "Thế vận hội Olympic được tổ chức vào mùa nào?","rightanswer": 2},
+  {"id": 4, "answer": ["6 người","10 người","11 người","5 người"],"question": "Một đội bóng rổ có bao nhiêu người chơi?","rightanswer": 3},
+  {"id": 5, "answer": ["Họ đứng đối diện","Họ quay lưng lại nhau","Một người ngồi và người đứng","một người cõng người còn lại"],"question": "Một người quay mặt về hướng Bắc, người còn lại quay về hướng Nam, làm sao để họ nhìn thấy nhau mà không dùng kính?","rightanswer": 0},
+  {"id": 6, "answer": ["Bàn tay","Găng tay","Bàn chân","Bàn là"],"question": "Cái gì có 5 ngón gồm 1 ngón cái và 4 ngón còn lại nhưng không phải là thứ đang sống?","rightanswer": 1},
+  {"id": 7, "answer": ["Gà trống","Gà mái","Không con nào","2 con đến cùng lúc"],"question": "Một con gà trống và một con gà mái thi nhau bơi qua sông, hỏi con nào đến đích trước?","rightanswer": 2},
+  {"id": 8, "answer": ["Ở Mỹ","Ở Tây Ban Nha","Ở Ý","Ở Nga"],"question": "Phía trước bạn là quảng trường xanh, sau lưng bạn là quảng trường trắng, vậy quảng trường đỏ ở đâu?","rightanswer": 3},
+  {"id": 9, "answer": ["Không có quy định","40km/h","50km/h","60km/h"],"question": "Tốc độ quy định tối đa của một vận động viên trong cuộc thi chạy marathon là bao nhiêu?","rightanswer": 0},
+  {"id": 10, "answer": ["Tháng Tư","Tháng năm","Tháng sáu","Tháng bảy"],"question": "Ngày tháng mười chưa cười đã tối. Đêm tháng mấy chưa nằm đã sáng?","rightanswer": 1},
+  {"id": 11, "answer": ["Tháng 12","Tháng 1","Tháng 2","Tháng 7"],"question": "Vào tháng nào con người sẽ ngủ ít nhất trong năm?","rightanswer": 2},
+  {"id": 12, "answer": ["Khi ngủ","Khi nhìn vào tường","Khi nhìn vào gương","Khi nhìn vào đồng hồ"],"question": "Khi nào chúng ta nhìn vào số 2 nhưng lại nói là 10?","rightanswer": 3},
+  {"id": 13, "answer": ["Không còn cục nào","Còn 1 cục","Còn 5 cục","Còn 2 cục"],"question": "Như bạn biết, 5 chia cho 5 thì bằng 1. Nếu bạn Tí có 5 cục kẹo chia đều cho 5 người bạn của mình, thì bạn Tí còn mấy cục kẹo?","rightanswer": 0},
+  {"id": 14, "answer": ["Làm thân","Làm gì cũng được","làm công nghệ","Làm biếng"],"question": "Người tuổi thân thường làm việc gì?","rightanswer": 1},
+  {"id": 15, "answer": ["6 quyển sách","7 quyển sách","8 quyển sách","9 quyển sách"],"question": "Ngày đầu tiên đi học, Lan đọc hết 2 quyển sách, ngày kế tiếp mẹ cho 9 quyển sách và Lan mỗi ngày đọc 1 quyển sách. Vậy tới hết ngày thứ 7 thì Lan đọc được bao nhiêu quyển sách?","rightanswer": 2},
+  {"id": 16, "answer": ["3 ngón","4 ngón","6 ngón","5 ngón"],"question": "Chân của gà ác thường có mấy ngón?","rightanswer": 3},
+  {"id": 17, "answer": ["Đen","Đậu","Hạt","Mầm"],"question": "Trong hài kịch 'Vợ thằng Đậu', vợ của thằng Đậu tên gì?","rightanswer": 0},
+  {"id": 18, "answer": ["Mê Kông","Đồng Nai","Cưu Long","Sông Hồng"],"question": "Sông nội địa dài nhất Việt Nam?","rightanswer": 1},
+  {"id": 19, "answer": ["Cá gai","Cá chim","Cá kiếm","Cá đuối"],"question": "Con cá gì đụng vào dễ đứt tay","rightanswer": 2},
+  {"id": 20, "answer": ["Ăn vạ","Ăn roi","Ăn đòn","Ăn gian"],"question": "Con nít ăn cái gì mà người lớn không thích nhất?","rightanswer": 3}
+]
+}

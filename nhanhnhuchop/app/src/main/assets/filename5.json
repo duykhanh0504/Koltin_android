@@ -1,0 +1,23 @@
+{"result":[
+  {"id": 1, "answer": ["Xe hư","Xe máy","Xe kẹo kéo","Xe ô tô"],"question": "Xe gì có động cơ mà không chạy?","rightanswer": 0},
+  {"id": 2, "answer": ["Trái mít","Trái bơ","Trái sầu riêng","Trái măng cụt"],"question": "Loài trái cây vô tình nhất thế giới?","rightanswer": 1},
+  {"id": 3, "answer": ["Anh","Pháp","Ý","Tây Ban Nha"],"question": "Chú bé Pinocchio thuộc nước nào?","rightanswer": 2},
+  {"id": 4, "answer": ["Không ai chết hết","Chết cùng lúc","Juliet","Romeo"],"question": "Trong câu chuyện Romeo và Juliet, ai qua đời trước?","rightanswer": 3},
+  {"id": 5, "answer": ["Nhuộm răng","Nhuộm tóc","Cột tay áo","Niềng răng"],"question": "'Nét cười đen nhánh sau tay áo' nói về phong tục gì?","rightanswer": 0},
+  {"id": 6, "answer": ["Bắc cực","Nam cực","Lục địa Á-Âu","Lục địa nào cũng cực"],"question": "Lục địa nào đàn ông vất vả nhất?","rightanswer": 1},
+  {"id": 7, "answer": ["Khoảng thời gian từ thứ hai này đến thứ ba tuần sau","Khoảng thời gian từ thứ hai này đến thứ hai tuần sau","Khoảng thời gian từ thứ ba này đến thứ hai tuần sau","Khoảng thời gian từ thứ ba này đến thứ hai"],"question": "Trong thời gian nào thứ ba sẽ đến trước thứ hai?","rightanswer": 2},
+  {"id": 8, "answer": ["Con rắn","Con cá","Con ốc","Con Ba Ba"],"question": "'Cẳng vịt, thịt gà, da trâu, đầu rắn' là con gì?","rightanswer": 3},
+  {"id": 9, "answer": ["Vì ngọn núi có hình dáng giống cô tiên","Vì có truyền thuyết cô tiên","Vì có cô tiên ở","Vì có người xinh như tiên"],"question": "Núi cô Tiên ở Nha Trang - Khánh Hòa, vì sao có tên như vậy?","rightanswer": 0},
+  {"id": 10, "answer": ["5 số","4 số","3 số","6 số"],"question": "Trên một chiếc đồng hồ treo tường, có bao nhiêu chữ số 1?","rightanswer": 0},
+  {"id": 11, "answer": ["Hướng Bắc","Không có khói","Hướng Nam","Hướng đông Nam"],"question": "Có một tàu điện đi về hướng nam. Gió hướng tây bắc. Vậy khói từ con tàu sẽ theo hướng nào?","rightanswer": 1},
+  {"id": 12, "answer": ["Không có cách nào","Cầm bằng tay trái","Cầm bằng 2 tay","Cầm bằng tay phải"],"question": " Làm thế nào để không đụng phải ngón tay khi bạn đập búa vào một cái móng tay?","rightanswer": 2},
+  {"id": 13, "answer": ["Lấy bằng tay","Lấy  bằng dao","Lấy  bằng kéo","Đợi chim bay đi"],"question": "Nếu bạn nhìn thấy con chim đang đậu trên nhánh cây, làm sao để lấy nhánh cây mà không làm động con chim?","rightanswer": 3},
+  {"id": 14, "answer": ["Con mèo con","Con báo","Con Hổ","Con cọp"],"question": "Cái đầu giống mèo, chân giống mèo, và tai giống con mèo, nhưng không phải con mèo.","rightanswer": 0},
+  {"id": 15, "answer": ["Con kênh","Con sông","Con đập","Con miệng rộng"],"question": "Miệng rộng nhưng không nói một từ, là gì?","rightanswer": 1},
+  {"id": 16, "answer": ["Họ không thích phản ứng","Họ không thấy","Lợp học cho trẻ mồ côi","Những đứa trẻ không thích"],"question": "Không bố mẹ nào phản ứng khi giáo viên đánh những đứa trẻ trong lớp, tại sao?","rightanswer": 2},
+  {"id": 17, "answer": ["Chân trời","Con đường","quá khứ","Tương lai"],"question": "Cái gì luôn ở phía trước bạn, mà bạn không bao giờ nhìn thấy?","rightanswer": 3},
+  {"id": 18, "answer": ["Ngày mai","Hôm nay","Hôm qua","Không có"],"question": "Cái gì luôn đi đến mà không bao giờ đến nơi?","rightanswer": 0},
+  {"id": 19, "answer": ["Lúc 13 giờ","Lúc đồng hồ hư","Lúc bạn đang ngủ say","Lúc bạn vừa mua đồng hồ"],"question": "Vào lúc nào thì đồng hồ gõ 13 tiếng?","rightanswer": 1},
+  {"id": 20, "answer": ["Lúc bạn thích","Lúc đói","Sau bữa ăn sáng","Sau bữa ăn chiều"],"question": "Lúc lý tưởng để ăn trưa?","rightanswer": 2}
+]
+}

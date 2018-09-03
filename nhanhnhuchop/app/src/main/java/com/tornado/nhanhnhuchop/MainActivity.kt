@@ -14,6 +14,9 @@ import android.view.Window
 import android.view.WindowManager
 import android.view.animation.BounceInterpolator
 import android.widget.Button
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.tornado.nhanhnhuchop.utils.px
 import org.json.JSONObject
 import java.io.InputStream
@@ -56,6 +59,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         hideStatusBar();
         setContentView(R.layout.activity_main)
+
+        MobileAds.initialize(this, "ca-app-pub-8221831888704889~1584347860");
+        val adView = findViewById(R.id.adview) as AdView
+        val adRequest = AdRequest.Builder()
+                .build()
+        adView.loadAd(adRequest)
 
 
         btnStart = this.findViewById(R.id.start) as Button

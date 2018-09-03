@@ -1,0 +1,23 @@
+{"result":[
+  {"id": 1, "answer": ["Nha Trang","Phú Yên","Phan Rang","Phan Thiết"],"question": "Hòn Chồng nằm ở đâu?","rightanswer": 0},
+  {"id": 2, "answer": ["Phú Yên","Nha Trang","Phan Rang","Phan Thiết"],"question": "Hòn vợ ở đâu?","rightanswer": 1},
+  {"id": 3, "answer": ["Con sóc","Con khỉ","Không con nào","Con nào cũng lấy được"],"question": "Con chim, con khỉ, con sóc trèo lên cây dừa, hỏi con nào lấy được trái chuối trước?","rightanswer": 2},
+  {"id": 4, "answer": ["Ăn tết","Ăn vặt","Ăn đòn","Ăn tiền"],"question": "Cái gì ăn chẳng no, chẳng béo nhưng ai cũng thích?","rightanswer": 3},
+  {"id": 5, "answer": ["Lâu đài tình ái","Lâu đài cát","Lâu đài ma","Lâu dài trên đại dương"],"question": "Lâu đài nào lãng mạn nhất?","rightanswer": 0},
+  {"id": 6, "answer": ["Cây ngô đồng","Cây ngô","cây chổi","Cây mía lau"],"question": "Loài cây gì được nhắc đến trong bài dân ca Lý chiều chiều?","rightanswer": 0},
+  {"id": 7, "answer": ["Nhà cửa","Không khí","sinh vật","không gian"],"question": "Ở giữa 'Bầu trời và Trái Đất' là gì?","rightanswer": 1},
+  {"id": 8, "answer": ["Một đầu","một phần hai đầu","Hai đầu","Ba đầu"],"question": "1 đĩa cam có 12 quả, vậy nửa đĩa cam có 6 quả. 2 nải chuối có 12 quả, vậy 1/2 nải chuối có 3 quả. 1 cái gậy có 2 đầu. Hỏi 1/2 cây gậy có mấy đầu?","rightanswer": 2},
+  {"id": 9, "answer": ["Sắt","Nước","Kim cương","Không khí"],"question": " Cái gì chặt không đứt, bứt không rời?","rightanswer": 3},
+  {"id": 10, "answer": ["Ba tuổi","Hai tuổi","Một tuổi","Bốn tuổi"],"question": "Thánh Gióng biết nói từ năm bao nhiêu tuổi?","rightanswer": 0},
+  {"id": 11, "answer": ["Ngựa lửa","Ngựa sắt","Ngựa cái","Ngựa đực"],"question": "Con ngựa mà Thánh Gióng cưỡi lên trời là con đực hay con cái?","rightanswer": 1},
+  {"id": 12, "answer": ["Giặc Minh","Giặc Ngô","Giặc Ân","Giặc ngoại xâm"],"question": "Thánh Gióng đánh giặc gì?","rightanswer": 2},
+  {"id": 13, "answer": ["Bộ bài","Bàn cờ tỷ phú","Bàn cờ tướng","Bàn cờ vua"],"question": "Ở đâu 30 người đàn ông và 2 người phụ nữ đánh nhau tán loạn?","rightanswer": 3},
+  {"id": 14, "answer": ["cửa kính","Áo choàng","Khúc xạ ánh sáng","kính chiếu hậu"],"question": "Phát minh nào giúp bạn nhìn xuyên tường?","rightanswer": 0},
+  {"id": 15, "answer": ["7 loại","8 loại","9 loại","10 loại"],"question": "Bài Rước đèn tháng 8 có bao nhiêu loại lồng đèn trong lời bài hát?","rightanswer": 1},
+  {"id": 16, "answer": ["45 phút","Không tốn thời gian","60 phút","75 phút"],"question": "Bạn bị đau đầu, bác sĩ kê cho 5 viên thuốc, theo hướng dẫn, cứ 15 phút phải uống 1 viên, hỏi bao lâu Hari mới uống hết số thuốc đó?","rightanswer": 2},
+  {"id": 17, "answer": ["Năm lần","Bốn lần","Ba lần","Hai lần"],"question": "Trong điệp khúc bài hát 'Anh cứ đi đi', em đã đuổi anh đi bao nhiêu lần?","rightanswer": 3},
+  {"id": 18, "answer": ["số 6","số 9","Số 69","Số 96"],"question": "Cái gì lộn ngược thì tăng gấp rưỡi?","rightanswer": 1},
+  {"id": 19, "answer": ["Khoa của","Nói nhiều","Khoác loát","Nham hiểm"],"question": "Ba hoa là gì?","rightanswer": 2},
+  {"id": 20, "answer": ["màu trắng trong","Màu trắng đục","màu hơi vàng","Không có răng"],"question": "Một gia đình có bố là người Châu Âu da trắng, mẹ là người Châu Á da vàng, họ vừa mới có con đầu lòng. Hỏi em bé có răng màu gì?","rightanswer": 3}
+]
+}

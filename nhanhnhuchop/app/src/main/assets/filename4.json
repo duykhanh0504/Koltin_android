@@ -1,0 +1,23 @@
+{"result":[
+  {"id": 1, "answer": ["Mua mắm/mua muối","Mua mắm","mua muối","Mua đường"],"question": "Trong bài ca dao Con mèo mà trèo cây cau, con chuột đi mua cái gì?","rightanswer": 0},
+  {"id": 2, "answer": ["Làm tiệc","Giỗ cha chú mèo","Không làm gì hết","Giỗ cha chú chuột"],"question": "Trong bài ca dao, con chuột đi mua mắm, mua muối để làm gì?","rightanswer": 1},
+  {"id": 3, "answer": ["Con mắt","Con đười ươi","con dao","Con đuòng"],"question": "Con gì có mũi mà không có mắt, có lưỡi mà không có miệng?","rightanswer": 2},
+  {"id": 4, "answer": ["Tùy loại","Bông","Sắt","Bằng nhau"],"question": "Một tấn sắt và một tấn bông gòn, cái nào nặng hơn?","rightanswer": 3},
+  {"id": 5, "answer": ["Robot","Mèo","Chó","Chồn"],"question": "Doraemon là loài vật gì?","rightanswer": 0},
+  {"id": 6, "answer": ["Không gì cả","Pin","Điện","Năng lượng tương lai"],"question": "Tượng Doraemon hoạt động bằng gì?","rightanswer": 0},
+  {"id": 7, "answer": ["California","Tiệm Sushi","Tiệm Bánh","Ở Nhật"],"question": "Muốn ăn sushi California thì phải đến chỗ nào mới ăn được?","rightanswer": 1},
+  {"id": 8, "answer": ["California","Hàn","Nhật","Việt"],"question": "Người làm ra sushi California đầu tiên là người ở đâu?","rightanswer": 2},
+  {"id": 9, "answer": ["Đi đường khác","Không thể qua","Liều đi qua","Đi bộ qua"],"question": "Cầu tải trọng 10 tấn, xe tải chở hàng nặng 13 tấn, làm sao bác tài qua cầu được (không bỏ bớt hàng trong xe xuống)?","rightanswer": 3},
+  {"id": 10, "answer": ["Cùng một lúc","Lúc này lúc kia","Sấm trước","Sét trước"],"question": "Sấm và sét, cái gì xảy ra trước?","rightanswer": 0},
+  {"id": 11, "answer": ["The day after tomorrow","My heart will go on","The day you went away","Heal the world"],"question": "Ca khúc trong bộ phim Titanic tên gì?","rightanswer": 1},
+  {"id": 12, "answer": ["1 chữ","2 chữ","3 chữ","4 chữ"],"question": "Có bao nhiêu chữ C trong câu sau đây: “Cơm, canh, cháo gì tớ cũng thích ăn!”","rightanswer": 0},
+  {"id": 13, "answer": ["Đúng","Không đúng","Sai","Không sai"],"question": " Từ gì mà 100% nguời dân Việt Nam đều phát âm sai?","rightanswer": 2},
+  {"id": 14, "answer": ["Bản thân","Bạn thân","cái tay trái","Cái bóng"],"question": "Nắng ba năm ta chưa hề bỏ bạn là gì?","rightanswer": 3},
+  {"id": 15, "answer": ["Cafe","Sữa","nước ngọt","nước mía"],"question": "Lại nước giải khát nào chứa sắt và canxi?","rightanswer": 0},
+  {"id": 16, "answer": ["Cái roi","Cái bàn chải đánh răng","Cái gậy","Cái cây"],"question": " Cái gì đánh cha, đánh má, đánh anh, đánh chị, đánh em?","rightanswer": 1},
+  {"id": 17, "answer": ["Mắt","Mũi","Chữ A","Chữ E"],"question": "Cái gì Adam có 2 mà Eva chỉ có 1?","rightanswer": 2},
+  {"id": 18, "answer": ["Nhấc cái cân lên","Cân bình thường","Không được","Lật ngược cái cân lại"],"question": "Làm sao để cái cân tự cân chính nó?","rightanswer": 3},
+  {"id": 19, "answer": ["Tiền","Lời cảm ơn","Lời khen","Vật không có gái trị"],"question": "Cái gì bạn không mượn mà trả?","rightanswer": 1},
+  {"id": 20, "answer": ["Khung Thành","Thủ môn","Trái banh","Đâu cũng được"],"question": "Khi Beckham thực hiện quả đá phạt đền, anh ta sẽ sút vào đâu?","rightanswer": 2}
+]
+}

@@ -59,7 +59,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     lateinit var mInterstitialAd: InterstitialAd
 
     var listquestion: MutableList<item> = ArrayList();
-    var numberquestion: Int =15
+    var numberquestion: Int =20
     var currentquestion: Int =0
     var maxquesion: Int =10
     var Score: Int =0
@@ -75,8 +75,8 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
 
     var pauseDialog: AlertDialog? = null;
 
-    val strwin = arrayOf<String>("Hay lắm","quá chuẩn","tuyệt vời", "ahaha...")
-    val strlose = arrayOf<String>("Dỏ ẹc","Dễ vậy mà ","Sai rồi nha","chúc may mắn lần sau ")
+    val strwin = arrayOf<String>("Hay lắm","quá chuẩn","tuyệt vời")
+    val strlose = arrayOf<String>("Dễ vậy mà ","Sai rồi nha","chúc may mắn lần sau ")
 
     private var isPaused = false
     private var resumeFromMillis:Long = 0
@@ -92,7 +92,15 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     private var txtAnswer2: TextView? = null
     private var txtAnswer3: TextView? = null
     private var txtAnswer4: TextView? = null
-    var timeRemaining:Long = 60
+
+    private var txtwin: TextView? = null
+    private var txtlose: TextView? = null
+    private var txtans: TextView? = null
+    private var imagewin: ImageView? = null
+    private var imagelose: ImageView? = null
+    private var wincontent:LinearLayout? = null
+    private var losecontent:LinearLayout? = null
+    var timeRemaining:Int = 100
    // private var bgImage:ImageView?=null
     private var bgImage: MutableList<ImageView?> = ArrayList();
 
@@ -107,15 +115,15 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     }
 
 
-        val timer1 = object: CountDownTimer(60000,1000){
+        val timer1 = object: CountDownTimer(100000,1000){
             override fun onTick(millisUntilFinished: Long) {
 
-                 timeRemaining =  millisUntilFinished / 1000
+                 timeRemaining =  (millisUntilFinished / 1000).toInt()
 
                 if (isPaused){
 
                     //resumeFromMillis = millisUntilFinished
-                    cancel()
+                    this.cancel()
                   //  GameOver()
                 }else{
                     if(millisUntilFinished / 1000 < 16)
@@ -124,7 +132,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
                             time?.setTextColor(getColor(R.color.red))
                         };
                     }
-                    time?.setText("Time : " + timeRemaining)
+                    time?.setText("Thời gian : " + timeRemaining)
                 }
 
                 //here you can have your logic to set text to edittext
@@ -132,13 +140,13 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
 
             override fun onFinish() {
                 time?.setText("0")
-                cancel()
+                this.cancel()
                GameOver()
             }
 
         }
 
-    val timewinlose = object: CountDownTimer(1000,1000){
+    val timewinlose = object: CountDownTimer(1200,1000){
         override fun onTick(millisUntilFinished: Long) {
 
 
@@ -146,8 +154,9 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         }
 
         override fun onFinish() {
-
-            cancel()
+            losecontent?.visibility = View.INVISIBLE
+            wincontent?.visibility = View.INVISIBLE
+            this.cancel()
         }
 
     }
@@ -165,7 +174,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
                 currentquestion++
                 nextquestion()
             } else {
-                timer1.start()
+                timer1.cancel()
                 GameOver()
             }
 
@@ -179,7 +188,10 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
 
     fun InitGame()
     {
-        numberquestion = 15
+     //   timer1.cancel()
+        wincontent?.visibility = View.INVISIBLE
+        losecontent?.visibility = View.INVISIBLE
+        numberquestion = 20
         currentquestion= 0
         maxquesion = 10
         Score = 0
@@ -214,6 +226,9 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
             txtAnswer2?.startAnimation(animation)
             txtAnswer3?.startAnimation(animation)
             txtAnswer4?.startAnimation(animation)
+            if( loginDialog?.isShowing == true) {
+                loginDialog?.dismiss()
+            }
     })
     }
 
@@ -248,6 +263,13 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
 
     fun <T> Iterable<T>.shuffle(): List<T> = this.toList().shuffle()
 
+    override fun onDestroy() {
+        super.onDestroy();
+        timewinlose.cancel()
+        timer1.cancel()
+        timerforanswer.cancel()
+
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         hideStatusBar()
@@ -259,10 +281,10 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         builder.setView(dialogLayout)
         builder.setCancelable(false)
         loginDialog = builder.create()
+        loginDialog?.show()
 
         val adView = findViewById(R.id.adview) as AdView
         btnpause = findViewById(R.id.btnpause) as ImageButton
-        InitGame()
          txtquestion = findViewById(R.id.question) as TextView
          time = findViewById(R.id.time) as TextView
         avatar = findViewById(R.id.avatar) as ImageView
@@ -331,6 +353,17 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         txtAnswer2 = findViewById(R.id.txtanswer2) as TextView
         txtAnswer3 = findViewById(R.id.txtanswer3) as TextView
         txtAnswer4 = findViewById(R.id.txtanswer4) as TextView
+
+        txtwin = findViewById(R.id.txtwin) as TextView
+        txtlose = findViewById(R.id.txtlose) as TextView
+        txtans = findViewById(R.id.txtans) as TextView
+        imagewin = findViewById(R.id.win) as ImageView
+        imagelose = findViewById(R.id.lose) as ImageView
+
+        wincontent = findViewById(R.id.contentwin) as LinearLayout
+        losecontent = findViewById(R.id.contentlose) as LinearLayout
+
+        InitGame()
 
         btnAnswer1!!.setOnClickListener {
             btnAnswer1?.setBackgroundResource(R.drawable.button_blue)
@@ -471,7 +504,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     }
 
     fun CheckAnswer( ans:Int){
-        var result: Boolean? = false
+
         btnAnswer1?.isEnabled = false
         btnAnswer2?.isEnabled = false
         btnAnswer3?.isEnabled = false
@@ -479,22 +512,67 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
 
         if(ans != listquestion.get(currentquestion).rightanswer)
         {
+            losecontent?.visibility = View.VISIBLE
+            var i = (1..3).random()
+            txtlose?.setText(strlose[i-1])
+            if(i == 1)
+            {
+                imagelose?.setBackgroundResource(R.drawable.lose1)
+            }
+            else if(i ==2)
+            {
+                imagelose?.setBackgroundResource(R.drawable.lose2)
+            }
+            else if(i==3)
+            {
+                imagelose?.setBackgroundResource(R.drawable.lose3)
+            }
+            timewinlose.start()
             if(listquestion.get(currentquestion).rightanswer == 0)
             {
                 btnAnswer1?.setBackgroundResource(R.drawable.button_redans)
+                txtans?.setText("đáp án : A")
             }
             if(listquestion.get(currentquestion).rightanswer == 1)
             {
                 btnAnswer2?.setBackgroundResource(R.drawable.button_redans)
+                txtans?.setText("đáp án : B")
             }
             if(listquestion.get(currentquestion).rightanswer == 2)
             {
                 btnAnswer3?.setBackgroundResource(R.drawable.button_redans)
+                txtans?.setText("đáp án : C")
             }
             if(listquestion.get(currentquestion).rightanswer == 3)
             {
                 btnAnswer4?.setBackgroundResource(R.drawable.button_redans)
+                txtans?.setText("đáp án : D")
             }
+
+        }
+        else
+        {
+
+
+            wincontent?.visibility = View.VISIBLE
+
+            var i = (1..3).random()
+
+
+            txtwin?.setText(strwin[i-1])
+            if(i == 1)
+            {
+                imagewin?.setBackgroundResource(R.drawable.win1)
+            }
+            else if(i ==2)
+            {
+                imagewin?.setBackgroundResource(R.drawable.win1)
+            }
+            else if(i==3)
+            {
+                imagewin?.setBackgroundResource(R.drawable.win1)
+            }
+            timewinlose.start()
         }
         Next(ans)
         timerforanswer.start()
@@ -530,7 +608,11 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
     {
         val intent = Intent(this, GameOverActivity::class.java)
         intent.putExtra("score",HighScore)
-        intent.putExtra("time", timeRemaining.toInt())
+        if(timeRemaining < 2)
+        {
+            timeRemaining = 0
+        }
+        intent.putExtra("time", timeRemaining)
         intent.putExtra("total",numberquestion)
         startActivity(intent);
         finish()
@@ -540,7 +622,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
         var json: String? = null
         try {
 
-            var i = (1..3).random()
+            var i = (1..10).random()
             val sharedPreferences = getSharedPreferences(PREFS_FILENAME, Context.MODE_PRIVATE)
 
             var id:String = sharedPreferences.getString(PREFS_ID, "")
@@ -551,7 +633,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
                 while (!check) {
                     for (temp in separate1) {
                         if (temp.compareTo(i.toString()) == 0) {
-                            i = (1..3).random();
+                            i = (1..10).random();
                             check = false;
                             break;
                         }
@@ -559,7 +641,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
                     }
                     if(check == true) {
                         id = id + ",$i";
-                        if (separate1.size == 2)
+                        if (separate1.size == 9)
                         {
                             id = "";
                         }
@@ -574,6 +656,7 @@ class MainGame : AppCompatActivity(), View.OnClickListener {
             editor.apply()
 
             var url:String = "filename$i.json";
+            //var url:String = "filename10.json";
             val  inputStream: InputStream = assets.open(url)
             json = inputStream.bufferedReader().use{it.readText()}
         } catch (ex: Exception) {

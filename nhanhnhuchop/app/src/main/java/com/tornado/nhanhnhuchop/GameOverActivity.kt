@@ -39,6 +39,11 @@ class GameOverActivity : AppCompatActivity() {
     fun ClosedRange<Int>.random() =
             Random().nextInt((endInclusive + 1) - start) +  start
 
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent);
+        finish();
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         hideStatusBar();
@@ -46,7 +51,7 @@ class GameOverActivity : AppCompatActivity() {
 
 
         highscore = "Bạn đã trả lời được <font color='blue'>" +  intent.getIntExtra("score",0) + "</font> câu" //getResources().getString(R.string.score).format( intent.getIntExtra("score",0))
-        intime = "Trong thời gian <font color='red'>" + (60 - intent.getIntExtra("time",0)) +"</font> giây"//getResources().getString(R.string.timer).format( intent.getIntExtra("time",0))
+        intime = "Trong thời gian <font color='red'>" + (100 - intent.getIntExtra("time",0)) +"</font> giây"//getResources().getString(R.string.timer).format( intent.getIntExtra("time",0))
         totalquestion = "Tổng số câu hỏi : <font color='green'>" + intent.getIntExtra("total",0) + "</font>" //getResources().getString(R.string.total)
 
         image = this.findViewById(R.id.image) as ImageView

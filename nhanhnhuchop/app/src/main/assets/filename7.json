@@ -1,0 +1,23 @@
+{"result":[
+  {"id": 1, "answer": ["Sông Mê Kông","Sông Cửu Long","Sông Tiền","Sông Hậu"],"question": "Hệ thống sông nào lớn nhất Đông Nam Á?","rightanswer": 0},
+  {"id": 2, "answer": ["4 con","3 con","2 con","1 con"],"question": "Trong truyện 'Dế Mèn phiêu lưu kí' có bao nhiêu con dế?","rightanswer": 1},
+  {"id": 3, "answer": ["Thập nhất","Ngọc Mễ","Tố Nga","Thập Nhị"],"question": "1 cô gái lúc nào cũng mang theo 12 trái bắp trong giỏ, hỏi cô gái ấy tên gì?","rightanswer": 2},
+  {"id": 4, "answer": ["test 1","test 1","test 1","test 1"],"question": "abc","rightanswer": 3},
+  {"id": 5, "answer": ["Vì xấu hổ","Vì thích như vậy","Vì đói","Vì lười đi ban ngày"],"question": "Trong câu chuyện 'Cò và Vạc', hãy cho biết vì sao ban đêm Vạc mới đi kiếm ăn?","rightanswer": 0},
+  {"id": 6, "answer": ["Em gái","Chị gái","Em trai","Anh trai"],"question": "Mối quan hệ giữa cháu gái với cháu trai thì tương tự như em trai với ai?","rightanswer": 1},
+  {"id": 7, "answer": ["Con cóc","Con ốc","Con mực","Con gái"],"question": "'Thịt da trắng muốt, nõn nà/ Thế mà tên gọi nghe ra đen sì'. Là con gì?","rightanswer": 2},
+  {"id": 8, "answer": ["Cám","Tấm","Dì ghẻ","Me của Cám"],"question": "Trong truyện cổ tích, dì ghẻ của Tấm tên là gì?","rightanswer": 3},
+  {"id": 9, "answer": ["Con giáp","Con chuột","Con heo","không có con này"],"question": "Con gì đầu chuột, đuôi heo?","rightanswer": 0},
+  {"id": 10, "answer": ["Cả hai con","Không con nào","Con đen","Con trắng"],"question": "Hai con chó đang lang thang ở công viên. Con chó trắng tên Đen, con chó Đen tên Trắng. Nam thấy chúng dễ thương, liền thẩy trái banh ra xa rồi ra lệnh: 'Đen, đi lượm trái banh'. Đố bạn, con chó nào sẽ đi lượm?","rightanswer": 1},
+  {"id": 11, "answer": ["Năm thứ","Bốn thứ","ba thứ","hai thứ"],"question": "Bài hát 'Người lạ ơi', có bao nhiêu thứ được mượn?","rightanswer": 2},
+  {"id": 12, "answer": ["Bốn thứ","ba thứ","hai thứ","Một thứ"],"question": "Trong bài hát Người lạ ơi, có bao nhiêu thứ mượn rồi được trả?","rightanswer": 3},
+  {"id": 13, "answer": ["Cá voi","Cá heo","Cá mập","Cá chim"],"question": "Con gì đầu ở dưới nước, đuôi ở trên rừng?","rightanswer": 0},
+  {"id": 14, "answer": ["Đồng xu","Đồng phục","Đồng chí","Đồng đội"],"question": "Đồng gì mặc được?","rightanswer": 1},
+  {"id": 15, "answer": ["Đồng xu","Đồng phục","Đồng tiền","Đồng bọn"],"question": "Đồng gì mà đa số ai cũng thích?","rightanswer": 2},
+  {"id": 16, "answer": ["Trong thôn","Làng nướng nam bộ","Làng quê","Làng Vũ Đại"],"question": "Bối cảnh diễn ra câu chuyện 'Chí Phèo' của nhà văn Nam Cao là ở làng nào?","rightanswer": 3},
+  {"id": 17, "answer": ["Không có","Cháo bò","Cháo cá","Tất cả"],"question": "Cháo lòng, cháo bò, cháo cá, cháo gà, đâu là loại cháo mà Thị Nở đã nấu cho Chí Phèo ăn?","rightanswer": 0},
+  {"id": 18, "answer": ["Tiêu hạt","Hành","Tiêu xay","Ớt"],"question": "Thị Nở nấu tô cháo bỏ thêm gì vào?","rightanswer": 1},
+  {"id": 19, "answer": ["Hoàng Cầm","Hoàng Vũ","Mộng Cầm","Vũ Cầm"],"question": "Di tích 'Lầu ông Hoàng' là nơi hẹn hò của nhà thơ Hàn Mặc Tử và cô gái tên gì?","rightanswer": 2},
+  {"id": 20, "answer": ["60 quả táo","63 quả táo","70 quả táo","72 quả táo"],"question": "Có hai cô gái cùng nhau đi hái táo trong vườn, cô hái trước được 10 quả, cô hái sau thu được số táo nhiều hơn cô trước. Hỏi cả hai cô gái hái được bao nhiêu quả?","rightanswer": 3}
+]
+}
